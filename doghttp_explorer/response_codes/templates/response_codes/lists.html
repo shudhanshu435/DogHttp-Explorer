@@ -1,0 +1,25 @@
+{% extends 'response_codes/base.html' %}
+
+{% block content %}
+<h2>Your Saved Lists</h2>
+
+{% if lists %}
+<ul>
+    {% for list in lists %}
+        <li>
+<!--            formats the date as "YYYY-MM-DD HH:MM:SS-->
+            <strong>{{ list.name }}</strong> - Created on {{ list.created_at|date:"d-Z-Y H:i:s" }}
+            <br>
+            <a href="{% url 'view_list' list.id %}">View</a> |
+            <a href="{% url 'edit_list' list.id %}">Edit</a> |
+            <a href="{% url 'delete_list' list.pk %}" onclick="return confirm('Are you sure?');">Delete</a> |
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>You have no saved lists.</p>
+{% endif %}
+
+
+<a href="{% url 'home' %}">Back to Home</a>
+{% endblock %}

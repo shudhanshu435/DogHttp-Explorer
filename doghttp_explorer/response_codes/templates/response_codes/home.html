@@ -1,0 +1,16 @@
+{% extends 'response_codes/base.html' %}
+
+{% block content %}
+
+    <h1>Welcome to DogHTTP Explorer</h1>
+    {% if user.is_authenticated %}
+    <p>Hello, {{ user.username }}!</p>
+    <br>
+    <a href="{% url 'search' %}">Search Response Codes</a>
+    <hr>
+    <a href="{% url 'lists' %}">View saved Lists</a>
+    {% else %}
+    <p>Please <a href="{% url 'login' %}">login</a> or <a href="{% url 'signup' %}">signup</a>.</p>
+    {% endif %}
+
+{% endblock %}

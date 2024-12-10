@@ -1,0 +1,18 @@
+{% extends 'response_codes/base.html' %}
+
+{% block content %}
+<h2>Edit List: {{ response_list.name }}</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <label for="name">List Name:</label>
+    <input type="text" id="name" name="name" value="{{ response_list.name }}" required>
+
+    <label for="response_codes">Response Codes (comma-separated):</label>
+    <input type="text" id="response_codes" name="response_codes" value="{{ response_list.response_codes }}" required>
+
+    <button type="submit">Save Changes</button>
+</form>
+
+<a href="{% url 'lists' %}">Back to Lists</a>
+{% endblock %}

@@ -1,0 +1,27 @@
+# Byte-compiled files
+*.pyc
+__pycache__/
+
+# Virtual environment
+code/
+Lib/
+Scripts/
+
+# Database files
+db.sqlite3
+
+# Django static and media
+staticfiles/
+media/
+
+# Logs and temporary files
+*.log
+*.bak
+*.swp
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env

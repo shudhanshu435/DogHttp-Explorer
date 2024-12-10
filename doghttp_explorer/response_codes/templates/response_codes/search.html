@@ -1,0 +1,32 @@
+{% extends 'response_codes/base.html' %}
+
+{% block content %}
+<h2>Search Response Codes</h2>
+
+<form method="get">
+    <label for="query">Enter Response Code Pattern (e.g., 2xx, 20x):</label>
+    <input type="text" id="query" name="query" value="{{ query }}">
+    <button type="submit">Search</button>
+</form>
+
+{% if zipped %}
+<h3>Search Results</h3>
+<ul>
+    {% for code, image in zipped %}
+        <li>
+            <strong>{{ code }}</strong> - <img src="{{ image }}" alt="Dog for {{ code }}" width="100">
+        </li>
+    {% endfor %}
+</ul>
+
+<h3>Save Filtered List</h3>
+<form method="post">
+    {% csrf_token %}
+    <label for="name">List Name:</label>
+    <input type="text" id="name" name="name" required>
+    <button type="submit">Save List</button>
+</form>
+{% else %}
+<p>No results to display.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'response_codes/base.html' %}
+
+{% block content %}
+<h2>{{ response_list.name }}</h2>
+<p>Created at: {{ response_list.created_at|date:"M d, Y H:i" }}</p>
+
+<ul>
+    {% for code, image in zipped %}
+        <li>
+            <strong>{{ code }}</strong> -
+            <img src="{{ image }}" alt="Dog for {{ code }}" width="100" />
+        </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'lists' %}">Back to Lists</a>
+{% endblock %}
